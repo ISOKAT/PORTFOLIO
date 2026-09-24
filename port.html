@@ -1,0 +1,1589 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aarav Singh — Software Engineer & UI/UX Designer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- FontAwesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            colors: {
+              glassBg: "rgba(255, 255, 255, 0.75)",
+              glassBorder: "rgba(255, 255, 255, 0.9)",
+              glassCard: "rgba(255, 255, 255, 0.65)",
+              primaryAccent: "#4f46e5",
+              softBlueBg: "#f8fafc",
+            },
+            boxShadow: {
+              glass: "0 8px 32px 0 rgba(148, 163, 184, 0.15)",
+              glassHover: "0 12px 40px 0 rgba(79, 70, 229, 0.2)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(
+          135deg,
+          #f1f5f9 0%,
+          #e2e8f0 50%,
+          #f8fafc 100%
+        );
+        color: #1e293b;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Background decorative glowing spheres */
+      .ambient-blob {
+        position: absolute;
+        filter: blur(80px);
+        z-index: -1;
+        opacity: 0.6;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 32px 0 rgba(148, 163, 184, 0.12);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .glass-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(79, 70, 229, 0.15);
+        border-color: rgba(79, 70, 229, 0.3);
+        background: rgba(255, 255, 255, 0.85);
+      }
+
+      .glass-pill {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #e2e8f0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body class="selection:bg-indigo-500 selection:text-white">
+    <div
+      class="ambient-blob w-[500px] h-[500px] bg-indigo-300 top-[-100px] left-[-100px]"
+    ></div>
+    <div
+      class="ambient-blob w-[600px] h-[600px] bg-purple-300 top-[40%] right-[-150px]"
+    ></div>
+    <div
+      class="ambient-blob w-[450px] h-[450px] bg-blue-200 bottom-[10%] left-[20%]"
+    ></div>
+
+    <header class="sticky top-4 z-50 px-4 sm:px-8 max-w-7xl mx-auto">
+      <nav
+        class="glass-panel rounded-full px-6 py-3 flex items-center justify-between shadow-glass"
+      >
+        <!-- Brand Logo -->
+        <div class="flex items-center space-x-3">
+          <div
+            class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center font-bold text-lg shadow-md"
+          >
+            IL
+          </div>
+          <div class="hidden sm:block">
+            <span class="font-bold text-slate-800 tracking-tight block text-sm"
+              >ISOKAT LYNE
+            </span>
+            <span class="text-xs text-slate-500 font-medium"
+              >Software Engineer & Designer</span
+            >
+          </div>
+        </div>
+
+        <!-- Desktop Nav Links -->
+        <div
+          class="hidden md:flex items-center space-x-1 lg:space-x-6 text-sm font-medium text-slate-600"
+        >
+          <a
+            href="#about"
+            class="px-3 py-1.5 rounded-full hover:bg-white/80 hover:text-indigo-600 transition"
+            >About</a
+          >
+          <a
+            href="#services"
+            class="px-3 py-1.5 rounded-full hover:bg-white/80 hover:text-indigo-600 transition"
+            >Services</a
+          >
+          <a
+            href="#skills"
+            class="px-3 py-1.5 rounded-full hover:bg-white/80 hover:text-indigo-600 transition"
+            >Technologies</a
+          >
+          <a
+            href="#work"
+            class="px-3 py-1.5 rounded-full hover:bg-white/80 hover:text-indigo-600 transition"
+            >Work</a
+          >
+          <a
+            href="#process"
+            class="px-3 py-1.5 rounded-full hover:bg-white/80 hover:text-indigo-600 transition"
+            >Process</a
+          >
+          <a
+            href="#testimonials"
+            class="px-3 py-1.5 rounded-full hover:bg-white/80 hover:text-indigo-600 transition"
+            >Testimonials</a
+          >
+        </div>
+
+        <!-- Action Button & Mobile Toggle -->
+        <div class="flex items-center space-x-3">
+          <a
+            href="#contact"
+            class="bg-slate-900 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-medium transition shadow-md flex items-center space-x-2 group"
+          >
+            <span>Let's Talk</span>
+            <i
+              class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"
+            ></i>
+          </a>
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden w-10 h-10 rounded-full bg-white/80 border border-white/90 flex items-center justify-center text-slate-700 shadow-sm focus:outline-none"
+          >
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden glass-panel mt-2 rounded-2xl p-4 flex flex-col space-y-2 text-slate-700 font-medium text-sm animate-fade-in shadow-xl"
+      >
+        <a
+          href="#about"
+          class="mobile-link px-4 py-2 rounded-xl hover:bg-white/80"
+          >About</a
+        >
+        <a
+          href="#services"
+          class="mobile-link px-4 py-2 rounded-xl hover:bg-white/80"
+          >Services</a
+        >
+        <a
+          href="#skills"
+          class="mobile-link px-4 py-2 rounded-xl hover:bg-white/80"
+          >Technologies</a
+        >
+        <a
+          href="#work"
+          class="mobile-link px-4 py-2 rounded-xl hover:bg-white/80"
+          >Work</a
+        >
+        <a
+          href="#process"
+          class="mobile-link px-4 py-2 rounded-xl hover:bg-white/80"
+          >Process</a
+        >
+        <a
+          href="#testimonials"
+          class="mobile-link px-4 py-2 rounded-xl hover:bg-white/80"
+          >Testimonials</a
+        >
+        <a
+          href="#contact"
+          class="mobile-link px-4 py-2 rounded-xl hover:bg-white/80 text-indigo-600 font-semibold"
+          >Contact Me</a
+        >
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-8 mt-8 sm:mt-12 space-y-24">
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Hero Left Content -->
+        <div class="lg:col-span-7 space-y-6">
+          <div
+            class="inline-flex items-center space-x-2 glass-pill px-4 py-1.5 rounded-full text-xs font-semibold text-indigo-700 shadow-sm"
+          >
+            <span
+              class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"
+            ></span>
+            <span>HELLO, I'M</span>
+          </div>
+
+          <h1
+            class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-tight"
+          >
+            ISOKAT LYNE NAFUNA
+            <span
+              class="block text-3xl sm:text-5xl lg:text-6xl bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500 bg-clip-text text-transparent mt-1"
+            >
+              Software Engineer & Designer
+            </span>
+          </h1>
+
+          <p
+            class="text-base sm:text-lg text-slate-600 max-w-2xl font-normal leading-relaxed"
+          >
+            I architect scalable full-stack applications and craft meaningful
+            digital experiences that are robust under the hood, intuitive to
+            use, and built with purpose.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a
+              href="#work"
+              class="bg-slate-900 hover:bg-indigo-600 text-white px-7 py-3.5 rounded-full font-medium transition shadow-lg shadow-slate-900/10 flex items-center space-x-2 group"
+            >
+              <span>View My Work</span>
+              <i
+                class="fa-solid fa-arrow-up-right text-xs group-hover:rotate-45 transition-transform"
+              ></i>
+            </a>
+            <button
+              onclick="downloadCV()"
+              class="glass-pill hover:bg-white text-slate-700 px-7 py-3.5 rounded-full font-medium transition shadow-sm flex items-center space-x-2"
+            >
+              <span>Download CV</span>
+              <i class="fa-solid fa-download text-xs text-slate-500"></i>
+            </button>
+          </div>
+
+          <!-- Trusted By Section -->
+          <div class="pt-6 border-t border-slate-200/60">
+            <p
+              class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3"
+            >
+              Trusted by innovative teams
+            </p>
+            <div
+              class="flex flex-wrap items-center gap-6 text-slate-500 font-semibold text-sm opacity-80 grayscale hover:grayscale-0 transition-all"
+            >
+              <span class="flex items-center space-x-1.5"
+                ><i class="fa-brands fa-google text-lg"></i
+                ><span>Google</span></span
+              >
+              <span class="flex items-center space-x-1.5"
+                ><i class="fa-brands fa-microsoft text-lg"></i
+                ><span>Microsoft</span></span
+              >
+              <span class="flex items-center space-x-1.5"
+                ><i class="fa-brands fa-airbnb text-lg"></i
+                ><span>Airbnb</span></span
+              >
+              <span class="flex items-center space-x-1.5"
+                ><i class="fa-brands fa-hubspot text-lg"></i
+                ><span>HubSpot</span></span
+              >
+              <span class="flex items-center space-x-1.5"
+                ><i class="fa-brands fa-dribbble text-lg"></i
+                ><span>Dribbble</span></span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Right Image/Card Mockup -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <!-- Main Glass Card Container -->
+          <div
+            class="w-full max-w-md glass-panel rounded-3xl p-6 relative shadow-glass overflow-hidden"
+          >
+            <!-- Glowing aura inside card -->
+            <div
+              class="absolute -top-16 -right-16 w-48 h-48 bg-indigo-400 rounded-full blur-3xl opacity-30 pointer-events-none"
+            ></div>
+
+            <!-- Profile Avatar Placeholder -->
+            <div
+              class="relative w-full h-80 rounded-2xl overflow-hidden shadow-inner bg-gradient-to-b from-slate-200 to-indigo-100 flex items-end justify-center"
+            >
+              <img
+                src="lyne.png"
+                alt="Isokat Lyne Nafuna"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent"
+              ></div>
+              <div
+                class="absolute bottom-4 left-4 right-4 text-white text-left"
+              >
+                <span
+                  class="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md"
+                  >Full-Stack & UX</span
+                >
+              </div>
+            </div>
+
+            <!-- Floating Badges on Hero Image -->
+            <div
+              class="absolute top-8 right-8 glass-panel px-4 py-2 rounded-2xl shadow-lg flex items-center space-x-2 animate-bounce"
+            >
+              <span class="text-indigo-600 font-bold text-sm">3+</span>
+              <span class="text-xs text-slate-600 font-medium leading-tight"
+                >Years of<br />Experience</span
+              >
+            </div>
+
+            <div
+              class="absolute bottom-16 left-8 glass-panel px-4 py-2.5 rounded-2xl shadow-lg flex items-center space-x-3"
+            >
+              <div
+                class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm"
+              >
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-500 font-medium">
+                  Design & Code Impact
+                </p>
+                <p class="text-sm font-bold text-slate-800">+135% Efficiency</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="pt-8">
+        <div
+          class="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-glass"
+        >
+          <div
+            class="absolute top-0 right-0 w-96 h-96 bg-purple-200/50 rounded-full blur-3xl pointer-events-none"
+          ></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 space-y-4">
+              <span
+                class="text-xs font-bold tracking-wider text-indigo-600 uppercase"
+                >About Me</span
+              >
+              <h2
+                class="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight"
+              >
+                Engineering with Code, Designing with Empathy.
+              </h2>
+              <p
+                class="text-slate-600 font-normal leading-relaxed text-sm sm:text-base"
+              >
+                I am a multidisciplinary Software Engineer and UI/UX Designer
+                bridging the gap between rigorous backend architecture and
+                pixel-perfect interfaces. Whether writing clean Python/Django
+                APIs or fluid React Native mobile apps, I focus on performance
+                and delightful user journeys.
+              </p>
+              <div class="pt-2">
+                <a
+                  href="#contact"
+                  class="inline-flex items-center space-x-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition group"
+                >
+                  <span>More About Me & Background</span>
+                  <i
+                    class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"
+                  ></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div
+                class="glass-card rounded-2xl p-6 text-center shadow-sm flex flex-col items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl mb-3 shadow-inner"
+                >
+                  <i class="fa-solid fa-code"></i>
+                </div>
+                <h3 class="text-3xl font-extrabold text-slate-900 mb-1">3+</h3>
+                <p class="text-xs text-slate-500 font-medium">
+                  Years Experience
+                </p>
+              </div>
+
+              <div
+                class="glass-card rounded-2xl p-6 text-center shadow-sm flex flex-col items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl mb-3 shadow-inner"
+                >
+                  <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h3 class="text-3xl font-extrabold text-slate-900 mb-1">10+</h3>
+                <p class="text-xs text-slate-500 font-medium">
+                  Projects Completed
+                </p>
+              </div>
+
+              <div
+                class="glass-card rounded-2xl p-6 text-center shadow-sm flex flex-col items-center justify-center"
+              >
+                <div
+                  class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-3 shadow-inner"
+                >
+                  <i class="fa-solid fa-face-smile"></i>
+                </div>
+                <h3 class="text-3xl font-extrabold text-slate-900 mb-1">12+</h3>
+                <p class="text-xs text-slate-500 font-medium">
+                  Happy Global Clients
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="space-y-6">
+        <div
+          class="flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold tracking-wider text-indigo-600 uppercase"
+              >What I Do</span
+            >
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-1">
+              Services I Offer
+            </h2>
+          </div>
+          <p class="text-slate-500 text-sm max-w-md font-normal">
+            Comprehensive digital solutions from initial system architecture and
+            database design to modern interactive UI/UX interfaces.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Service 1 -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm group"
+          >
+            <div>
+              <div
+                class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl mb-6 shadow-sm group-hover:bg-indigo-600 group-hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">
+                Product & UX Design
+              </h3>
+              <p class="text-sm text-slate-600 font-normal leading-relaxed">
+                Creating intuitive user flows, wireframes, high-fidelity
+                prototypes, and accessible design systems in Figma.
+              </p>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between text-xs font-semibold text-indigo-600"
+            >
+              <span>Learn More</span>
+              <i
+                class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm group"
+          >
+            <div>
+              <div
+                class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl mb-6 shadow-sm group-hover:bg-purple-600 group-hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-mobile-screen-button"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">
+                Mobile App Engineering
+              </h3>
+              <p class="text-sm text-slate-600 font-normal leading-relaxed">
+                Building performant, cross-platform mobile apps using React
+                Native and Expo with native integrations.
+              </p>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between text-xs font-semibold text-purple-600"
+            >
+              <span>Learn More</span>
+              <i
+                class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm group"
+          >
+            <div>
+              <div
+                class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl mb-6 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-server"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">
+                Full-Stack Backends
+              </h3>
+              <p class="text-sm text-slate-600 font-normal leading-relaxed">
+                Architecting secure, scalable RESTful APIs with Python, Django,
+                and optimized MySQL relational databases.
+              </p>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between text-xs font-semibold text-blue-600"
+            >
+              <span>Learn More</span>
+              <i
+                class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"
+              ></i>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm group"
+          >
+            <div>
+              <div
+                class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl mb-6 shadow-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors"
+              >
+                <i class="fa-solid fa-cube"></i>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-2">
+                Interactive 3D Web & UI
+              </h3>
+              <p class="text-sm text-slate-600 font-normal leading-relaxed">
+                Integrating immersive 3D model projects, animations, and
+                interactive web experiences for e-learning and SaaS.
+              </p>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between text-xs font-semibold text-emerald-600"
+            >
+              <span>Learn More</span>
+              <i
+                class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"
+              ></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="space-y-6">
+        <div class="text-center max-w-xl mx-auto">
+          <span
+            class="text-xs font-bold tracking-wider text-indigo-600 uppercase"
+            >Tools & Skills</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-1">
+            Technologies I Use
+          </h2>
+          <p class="text-slate-500 text-sm mt-2">
+            A robust stack of modern programming languages, frameworks, and
+            design tools.
+          </p>
+        </div>
+
+        <!-- Technology Icons Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+          <!-- React Native -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-cyan-50 text-cyan-600 flex items-center justify-center text-2xl mb-3 shadow-inner group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-brands fa-react"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-800">React Native</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">Mobile Stack</span>
+          </div>
+
+          <!-- Expo -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-900 flex items-center justify-center text-xl mb-3 shadow-inner group-hover:scale-110 transition-transform font-bold"
+            >
+              EX
+            </div>
+            <span class="text-xs font-bold text-slate-800">Expo</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">App Framework</span>
+          </div>
+
+          <!-- Django -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl mb-3 shadow-inner group-hover:scale-110 transition-transform font-bold"
+            >
+              DJ
+            </div>
+            <span class="text-xs font-bold text-slate-800">Django</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">Backend REST</span>
+          </div>
+
+          <!-- Python -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mb-3 shadow-inner group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-brands fa-python"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Python</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">Core Language</span>
+          </div>
+
+          <!-- MySQL -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center text-2xl mb-3 shadow-inner group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-800">MySQL</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">Database</span>
+          </div>
+
+          <!-- JavaScript -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-yellow-50 text-yellow-600 flex items-center justify-center text-2xl mb-3 shadow-inner group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-brands fa-js"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-800">JavaScript</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">ESNext</span>
+          </div>
+
+          <!-- TypeScript -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl mb-3 shadow-inner group-hover:scale-110 transition-transform font-bold"
+            >
+              TS
+            </div>
+            <span class="text-xs font-bold text-slate-800">TypeScript</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">Typed JS</span>
+          </div>
+
+          <!-- Figma -->
+          <div
+            class="glass-card rounded-2xl p-5 flex flex-col items-center justify-center text-center shadow-sm group"
+          >
+            <div
+              class="w-12 h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-2xl mb-3 shadow-inner group-hover:scale-110 transition-transform"
+            >
+              <i class="fa-brands fa-figma"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-800">Figma</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">UI/UX Design</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="space-y-6">
+        <div
+          class="flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold tracking-wider text-indigo-600 uppercase"
+              >Featured Projects</span
+            >
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-1">
+              Selected Work
+            </h2>
+          </div>
+          <button
+            onclick="openAllProjectsModal()"
+            class="glass-pill hover:bg-white text-slate-800 px-5 py-2.5 rounded-full text-sm font-semibold transition shadow-sm flex items-center space-x-2"
+          >
+            <span>View All Projects</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Project 1: Full-stack Financial App -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm group"
+          >
+            <div class="space-y-4">
+              <div
+                class="w-full h-52 rounded-2xl overflow-hidden bg-slate-200 relative"
+              >
+                <img
+                  src="https://placehold.co/600x400/e0e7ff/3730a3?text=FinTrack+Mobile+App"
+                  alt="FinTrack App"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/600x400/e0e7ff/3730a3?text=FinTrack+App'
+                  "
+                />
+                <div
+                  class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-indigo-700"
+                >
+                  React Native & Django
+                </div>
+              </div>
+              <div>
+                <h3
+                  class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors"
+                >
+                  FinTrack: Personal Finance Suite
+                </h3>
+                <p class="text-xs text-slate-500 font-medium mt-1">
+                  Full-stack mobile budgeting & investment tracking
+                </p>
+                <p class="text-sm text-slate-600 mt-3 line-clamp-2">
+                  Built with React Native, Expo, and Django REST framework
+                  backed by MySQL. Features real-time currency conversion,
+                  automated expense categorization, and secure biometric
+                  authentication.
+                </p>
+              </div>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between"
+            >
+              <div class="flex items-center space-x-2">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700 text-[10px] font-bold"
+                  >Python</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-md bg-cyan-50 text-cyan-700 text-[10px] font-bold"
+                  >Expo</span
+                >
+              </div>
+              <button
+                onclick="
+                  openProjectDetails(
+                    'FinTrack Personal Finance Suite',
+                    'A comprehensive personal financial tracking application built using React Native and Expo for cross-platform mobile access, powered by a robust Django and MySQL backend. Features real-time budget forecasting, encrypted expense logging, and interactive data visualization charts.',
+                  )
+                "
+                class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs group-hover:bg-indigo-600 transition-colors"
+              >
+                <i class="fa-solid fa-arrow-up-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 2: E-Learning 3D Model Center -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm group"
+          >
+            <div class="space-y-4">
+              <div
+                class="w-full h-52 rounded-2xl overflow-hidden bg-slate-200 relative"
+              >
+                <img
+                  src="https://placehold.co/600x400/fae8ff/86198f?text=EduVerse+3D+Platform"
+                  alt="EduVerse 3D"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/600x400/fae8ff/86198f?text=EduVerse+3D+Platform'
+                  "
+                />
+                <div
+                  class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-purple-700"
+                >
+                  Three.js & TypeScript
+                </div>
+              </div>
+              <div>
+                <h3
+                  class="text-xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors"
+                >
+                  EduVerse: 3D E-Learning Center
+                </h3>
+                <p class="text-xs text-slate-500 font-medium mt-1">
+                  Interactive 3D model project for immersive learning
+                </p>
+                <p class="text-sm text-slate-600 mt-3 line-clamp-2">
+                  An immersive web-based educational portal featuring
+                  interactive 3D anatomical and mechanical models rendered with
+                  Three.js, TypeScript, and Tailwind CSS.
+                </p>
+              </div>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between"
+            >
+              <div class="flex items-center space-x-2">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-purple-50 text-purple-700 text-[10px] font-bold"
+                  >Three.js</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-md bg-blue-50 text-blue-700 text-[10px] font-bold"
+                  >TypeScript</span
+                >
+              </div>
+              <button
+                onclick="
+                  openProjectDetails(
+                    'EduVerse 3D E-Learning Center',
+                    'An interactive educational platform incorporating 3D models for immersive student engagement. Developed using Three.js for smooth browser-based 3D rendering, TypeScript for type-safe interaction logic, and Django API endpoints for student progress tracking.',
+                  )
+                "
+                class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs group-hover:bg-purple-600 transition-colors"
+              >
+                <i class="fa-solid fa-arrow-up-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Project 3: SaaS Analytics Dashboard -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm group"
+          >
+            <div class="space-y-4">
+              <div
+                class="w-full h-52 rounded-2xl overflow-hidden bg-slate-200 relative"
+              >
+                <img
+                  src="https://placehold.co/600x400/e0f2fe/0369a1?text=SaaS+Analytics+Hub"
+                  alt="SaaS Dashboard"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/600x400/e0f2fe/0369a1?text=SaaS+Analytics+Hub'
+                  "
+                />
+                <div
+                  class="absolute top-3 left-3 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-sky-700"
+                >
+                  Figma & React
+                </div>
+              </div>
+              <div>
+                <h3
+                  class="text-xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors"
+                >
+                  MetricsHub: SaaS Analytics Dashboard
+                </h3>
+                <p class="text-xs text-slate-500 font-medium mt-1">
+                  Enterprise data visualization & user telemetry
+                </p>
+                <p class="text-sm text-slate-600 mt-3 line-clamp-2">
+                  Designed in Figma with comprehensive design systems, then
+                  engineered with React and Django for real-time telemetry,
+                  custom reporting, and team collaboration.
+                </p>
+              </div>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center justify-between"
+            >
+              <div class="flex items-center space-x-2">
+                <span
+                  class="px-2.5 py-1 rounded-md bg-pink-50 text-pink-700 text-[10px] font-bold"
+                  >Figma</span
+                >
+                <span
+                  class="px-2.5 py-1 rounded-md bg-sky-50 text-sky-700 text-[10px] font-bold"
+                  >React</span
+                >
+              </div>
+              <button
+                onclick="
+                  openProjectDetails(
+                    'MetricsHub SaaS Analytics Dashboard',
+                    'A high-performance enterprise dashboard designed for tracking user acquisition, churn metrics, and server health. Built with React frontend and Django backend, featuring customizable widget layouts and dark/light glassmorphic themes.',
+                  )
+                "
+                class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs group-hover:bg-sky-600 transition-colors"
+              >
+                <i class="fa-solid fa-arrow-up-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="space-y-6">
+        <div class="text-center max-w-xl mx-auto">
+          <span
+            class="text-xs font-bold tracking-wider text-indigo-600 uppercase"
+            >My Workflow</span
+          >
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-1">
+            Design & Engineering Process
+          </h2>
+          <p class="text-slate-500 text-sm mt-2">
+            A structured 5-step methodology from initial discovery to continuous
+            refinement.
+          </p>
+        </div>
+
+        <!-- Process Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <!-- Step 1 -->
+          <div
+            class="glass-card rounded-2xl p-5 relative shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-bold text-sm shadow-inner"
+                  >01</span
+                >
+                <i
+                  class="fa-solid fa-magnifying-glass text-indigo-500 opacity-60"
+                ></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Discover</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Understanding user needs, defining project scope, and analyzing
+                technical requirements.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-slate-200/60 text-[10px] font-semibold text-indigo-600 uppercase tracking-wider"
+            >
+              Research & Audit
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            class="glass-card rounded-2xl p-5 relative shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm shadow-inner"
+                  >02</span
+                >
+                <i
+                  class="fa-solid fa-compass-drafting text-purple-500 opacity-60"
+                ></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Define</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Architecting database schemas, user flows, wireframes, and
+                system specifications.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-slate-200/60 text-[10px] font-semibold text-purple-600 uppercase tracking-wider"
+            >
+              Wireframing
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            class="glass-card rounded-2xl p-5 relative shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm shadow-inner"
+                  >03</span
+                >
+                <i class="fa-solid fa-lightbulb text-blue-500 opacity-60"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Ideate</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Prototyping high-fidelity UI designs in Figma and planning
+                modular component logic.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-slate-200/60 text-[10px] font-semibold text-blue-600 uppercase tracking-wider"
+            >
+              UI & Architecture
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div
+            class="glass-card rounded-2xl p-5 relative shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm shadow-inner"
+                  >04</span
+                >
+                <i class="fa-solid fa-code text-emerald-500 opacity-60"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Develop</h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Writing clean, maintainable code with Python/Django, React
+                Native, and TypeScript.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-slate-200/60 text-[10px] font-semibold text-emerald-600 uppercase tracking-wider"
+            >
+              Full-Stack Code
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div
+            class="glass-card rounded-2xl p-5 relative shadow-sm flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span
+                  class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm shadow-inner"
+                  >05</span
+                >
+                <i class="fa-solid fa-rocket text-amber-500 opacity-60"></i>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">
+                Test & Iterate
+              </h3>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Rigorous QA testing, user feedback integration, performance
+                tuning, and deployment.
+              </p>
+            </div>
+            <div
+              class="mt-4 pt-3 border-t border-slate-200/60 text-[10px] font-semibold text-amber-600 uppercase tracking-wider"
+            >
+              Launch & Refine
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" class="space-y-6">
+        <div
+          class="flex flex-col sm:flex-row sm:items-end justify-between gap-4"
+        >
+          <div>
+            <span
+              class="text-xs font-bold tracking-wider text-indigo-600 uppercase"
+              >Testimonials</span
+            >
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-1">
+              What Clients Say
+            </h2>
+          </div>
+          <p class="text-slate-500 text-sm max-w-sm font-normal">
+            Feedback from founders, product managers, and engineering leads who
+            have collaborated with me.
+          </p>
+        </div>
+
+        <!-- Testimonials Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Testimonial 1 -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm"
+          >
+            <div class="space-y-4">
+              <div class="text-indigo-600 text-2xl font-serif">“</div>
+              <p class="text-sm text-slate-700 font-normal leading-relaxed">
+                Aarav is an exceptional engineer and designer. He understands
+                user needs deeply and delivered an outstanding financial app on
+                React Native ahead of schedule.
+              </p>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center space-x-3"
+            >
+              <img
+                src="https://placehold.co/100x100/cbd5e1/334155?text=RS"
+                alt="Rohit Sharma"
+                class="w-10 h-10 rounded-full object-cover"
+              />
+              <div>
+                <p class="text-xs font-bold text-slate-900">Rohit Sharma</p>
+                <p class="text-[11px] text-slate-500 font-medium">
+                  Product Manager, Google
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm"
+          >
+            <div class="space-y-4">
+              <div class="text-purple-600 text-2xl font-serif">“</div>
+              <p class="text-sm text-slate-700 font-normal leading-relaxed">
+                Working with Aarav was smooth and inspiring. His attention to
+                detail in UI/UX and backend robustness with Django is truly
+                impressive.
+              </p>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center space-x-3"
+            >
+              <img
+                src="https://placehold.co/100x100/cbd5e1/334155?text=NV"
+                alt="Neha Verma"
+                class="w-10 h-10 rounded-full object-cover"
+              />
+              <div>
+                <p class="text-xs font-bold text-slate-900">Neha Verma</p>
+                <p class="text-[11px] text-slate-500 font-medium">
+                  Design Lead, Microsoft
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div
+            class="glass-card rounded-3xl p-6 flex flex-col justify-between shadow-sm"
+          >
+            <div class="space-y-4">
+              <div class="text-blue-600 text-2xl font-serif">“</div>
+              <p class="text-sm text-slate-700 font-normal leading-relaxed">
+                Aarav's designs and code not only look amazing but also solve
+                real user problems. Highly recommended for any high-scale
+                digital product!
+              </p>
+            </div>
+            <div
+              class="pt-6 mt-6 border-t border-slate-200/60 flex items-center space-x-3"
+            >
+              <img
+                src="https://placehold.co/100x100/cbd5e1/334155?text=KM"
+                alt="Karan Malhotra"
+                class="w-10 h-10 rounded-full object-cover"
+              />
+              <div>
+                <p class="text-xs font-bold text-slate-900">Karan Malhotra</p>
+                <p class="text-[11px] text-slate-500 font-medium">
+                  Founder, StartupX
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="pb-16">
+        <div
+          class="glass-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden shadow-glass"
+        >
+          <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-200/50 rounded-full blur-3xl pointer-events-none"
+          ></div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Contact Left Info -->
+            <div class="lg:col-span-5 space-y-6">
+              <div>
+                <span
+                  class="text-xs font-bold tracking-wider text-indigo-600 uppercase"
+                  >Let's Connect</span
+                >
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mt-1">
+                  Have a project in mind?
+                </h2>
+                <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                  Let's create something amazing together. Reach out for
+                  full-stack engineering collaborations, mobile apps, or UI/UX
+                  design consulting.
+                </p>
+              </div>
+
+              <div class="space-y-4 pt-2">
+                <div class="flex items-center space-x-4 text-slate-700">
+                  <div
+                    class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-sm shadow-sm"
+                  >
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-400 font-medium">Email Me</p>
+                    <a
+                      href="mailto:isokatlynenafuna@gmail.com"
+                      class="text-sm font-semibold text-slate-800 hover:text-indigo-600 transition"
+                      >isokatlynenafuna@gmail.com</a
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-4 text-slate-700">
+                  <div
+                    class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm shadow-sm"
+                  >
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-400 font-medium">
+                      Phone / WhatsApp
+                    </p>
+                    <span class="text-sm font-semibold text-slate-800"
+                      >+254 700048700</span
+                    >
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-4 text-slate-700">
+                  <div
+                    class="w-10 h-10 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm shadow-sm"
+                  >
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-400 font-medium">Location</p>
+                    <span class="text-sm font-semibold text-slate-800"
+                      >Nairobi, Kenya (Global Remote)</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center space-x-3 pt-4">
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-white/80 border border-white flex items-center justify-center text-slate-700 hover:bg-indigo-600 hover:text-white transition shadow-sm"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-white/80 border border-white flex items-center justify-center text-slate-700 hover:bg-indigo-600 hover:text-white transition shadow-sm"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-white/80 border border-white flex items-center justify-center text-slate-700 hover:bg-indigo-600 hover:text-white transition shadow-sm"
+                  ><i class="fa-brands fa-twitter"></i
+                ></a>
+                <a
+                  href="#"
+                  class="w-10 h-10 rounded-full bg-white/80 border border-white flex items-center justify-center text-slate-700 hover:bg-indigo-600 hover:text-white transition shadow-sm"
+                  ><i class="fa-brands fa-dribbble"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Contact Form Right -->
+            <div class="lg:col-span-7">
+              <form
+                id="contact-form"
+                onsubmit="handleFormSubmit(event)"
+                class="glass-card rounded-3xl p-6 sm:p-8 space-y-4 shadow-sm"
+              >
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1.5">
+                    <label class="text-xs font-semibold text-slate-700"
+                      >Your Name</label
+                    >
+                    <input
+                      type="text"
+                      id="sender-name"
+                      required
+                      placeholder="John Doe"
+                      class="w-full px-4 py-3 rounded-2xl bg-white/80 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    />
+                  </div>
+                  <div class="space-y-1.5">
+                    <label class="text-xs font-semibold text-slate-700"
+                      >Your Email</label
+                    >
+                    <input
+                      type="email"
+                      id="sender-email"
+                      required
+                      placeholder="john@example.com"
+                      class="w-full px-4 py-3 rounded-2xl bg-white/80 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    />
+                  </div>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="text-xs font-semibold text-slate-700"
+                    >Project Type</label
+                  >
+                  <select
+                    id="project-type"
+                    class="w-full px-4 py-3 rounded-2xl bg-white/80 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option>
+                      Full-Stack Mobile App (React Native + Django)
+                    </option>
+                    <option>UI/UX Design & Design Systems</option>
+                    <option>3D Interactive Web App (Three.js)</option>
+                    <option>Full-Stack Web Development</option>
+                    <option>Other Collaboration</option>
+                  </select>
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="text-xs font-semibold text-slate-700"
+                    >Your Message</label
+                  >
+                  <textarea
+                    id="sender-message"
+                    required
+                    rows="4"
+                    placeholder="Tell me about your project goals and timeline..."
+                    class="w-full px-4 py-3 rounded-2xl bg-white/80 border border-slate-200 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-slate-900 hover:bg-indigo-600 text-white font-medium py-3.5 rounded-2xl text-sm transition shadow-md flex items-center justify-center space-x-2 group"
+                >
+                  <span id="submit-btn-text">Send Message</span>
+                  <i
+                    class="fa-solid fa-paper-plane text-xs group-hover:translate-x-1 transition-transform"
+                  ></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        class="text-center py-8 border-t border-slate-200/60 text-xs text-slate-500 font-medium flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <p>© 2026 Aarav Singh. Crafted with precision & glassmorphism.</p>
+        <div class="flex items-center space-x-6">
+          <a href="#about" class="hover:text-indigo-600 transition"
+            >Privacy Policy</a
+          >
+          <a href="#contact" class="hover:text-indigo-600 transition"
+            >Terms of Service</a
+          >
+          <a href="#" class="hover:text-indigo-600 transition">Back to Top ↑</a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Project Details Modal -->
+    <div
+      id="project-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4"
+    >
+      <div
+        class="glass-panel w-full max-w-lg rounded-3xl p-6 sm:p-8 space-y-4 shadow-2xl relative animate-fade-in"
+      >
+        <button
+          onclick="closeProjectModal()"
+          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/80 hover:bg-white text-slate-700 flex items-center justify-center shadow-sm"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div
+          class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold"
+        >
+          Project Showcase
+        </div>
+        <h3 id="modal-title" class="text-2xl font-bold text-slate-900">
+          Project Title
+        </h3>
+        <p id="modal-desc" class="text-sm text-slate-600 leading-relaxed">
+          Project description goes here...
+        </p>
+        <div class="pt-4 flex items-center space-x-3">
+          <a
+            href="#contact"
+            onclick="closeProjectModal()"
+            class="bg-slate-900 hover:bg-indigo-600 text-white px-6 py-2.5 rounded-full text-xs font-semibold transition"
+          >
+            Inquire Similar Project
+          </a>
+          <button
+            onclick="closeProjectModal()"
+            class="glass-pill px-6 py-2.5 rounded-full text-xs font-semibold text-slate-700 hover:bg-white transition"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Message Modal -->
+    <div
+      id="success-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4"
+    >
+      <div
+        class="glass-panel w-full max-w-sm rounded-3xl p-6 text-center space-y-4 shadow-2xl"
+      >
+        <div
+          class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mx-auto shadow-inner"
+        >
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900">Message Sent!</h3>
+        <p class="text-xs text-slate-600">
+          Thank you for reaching out. Isoat Lyne will get back to you within 24
+          hours.
+        </p>
+        <button
+          onclick="closeSuccessModal()"
+          class="w-full bg-slate-900 hover:bg-indigo-600 text-white py-2.5 rounded-xl text-xs font-semibold transition"
+        >
+          Got it
+        </button>
+      </div>
+    </div>
+
+    <!-- CV Download Alert / Simulation -->
+    <div
+      id="cv-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4"
+    >
+      <div
+        class="glass-panel w-full max-w-sm rounded-3xl p-6 text-center space-y-4 shadow-2xl"
+      >
+        <div
+          class="w-14 h-14 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-2xl mx-auto shadow-inner"
+        >
+          <i class="fa-solid fa-file-arrow-down"></i>
+        </div>
+        <h3 class="text-xl font-bold text-slate-900">CV Downloaded</h3>
+        <p class="text-xs text-slate-600">
+          ISOKAT_LYNE_Resume_2026.pdf has been successfully saved to your
+          downloads.
+        </p>
+        <button
+          onclick="closeCVModal()"
+          class="w-full bg-slate-900 hover:bg-indigo-600 text-white py-2.5 rounded-xl text-xs font-semibold transition"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- JavaScript Actions -->
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Hide mobile menu on link click
+      document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // Project Details Modal
+      function openProjectDetails(title, desc) {
+        document.getElementById("modal-title").innerText = title;
+        document.getElementById("modal-desc").innerText = desc;
+        const modal = document.getElementById("project-modal");
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      }
+
+      function closeProjectModal() {
+        const modal = document.getElementById("project-modal");
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
+      }
+
+      function openAllProjectsModal() {
+        openProjectDetails(
+          "All Portfolio Projects",
+          "Showcasing over 45+ digital products built across mobile platforms (React Native, Expo), backend systems (Django, Python, MySQL), and interactive 3D web applications.",
+        );
+      }
+
+      // CV Download Simulation
+      function downloadCV() {
+        const cvModal = document.getElementById("cv-modal");
+        cvModal.classList.remove("hidden");
+        cvModal.classList.add("flex");
+      }
+
+      function closeCVModal() {
+        const cvModal = document.getElementById("cv-modal");
+        cvModal.classList.remove("flex");
+        cvModal.classList.add("hidden");
+      }
+
+      // Contact Form Submission
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        const btnText = document.getElementById("submit-btn-text");
+        btnText.innerText = "Sending...";
+
+        setTimeout(() => {
+          btnText.innerText = "Send Message";
+          document.getElementById("contact-form").reset();
+          const successModal = document.getElementById("success-modal");
+          successModal.classList.remove("hidden");
+          successModal.classList.add("flex");
+        }, 800);
+      }
+
+      function closeSuccessModal() {
+        const successModal = document.getElementById("success-modal");
+        successModal.classList.remove("flex");
+        successModal.classList.add("hidden");
+      }
+    </script>
+  </body>
+</html>
