@@ -1515,7 +1515,7 @@
     // WhatsApp Contact Form Integration
 document.addEventListener("DOMContentLoaded", function() {
     const contactForm = document.querySelector("#contact-form") || document.querySelector("form");
-    if (contactForm) {
+    if (cZontactForm) {
         contactForm.addEventListener("submit", function(e) {
             e.preventDefault();
             
@@ -1526,7 +1526,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const message = document.getElementById("message")?.value || document.querySelector("textarea")?.value || "";
             
             // Put your actual WhatsApp phone number here with country code (e.g., 2547XXXXXXXX)
-            const phoneNumber = "2547XXXXXXXX"; 
+            const phoneNumber = "254700048700"; 
             
             // Construct the message text
             const text = `Hello! My name is ${name} (${email}).%0A%0AProject Type: ${project}%0A%0AMessage: ${message}`;
