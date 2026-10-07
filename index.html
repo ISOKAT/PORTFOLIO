@@ -1552,9 +1552,13 @@
 
       // CV Download Simulation
       function downloadCV() {
-        const cvModal = document.getElementById("cv-modal");
-        cvModal.classList.remove("hidden");
-        cvModal.classList.add("flex");
+    const link = document.createElement('a');
+    link.href = 'Lyne CV.pdf';
+    link.download = 'Lyne_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
       }
 
       function closeCVModal() {
