@@ -1512,15 +1512,31 @@
     </div>
 
     <!-- JavaScript Actions -->
-    <script>
-      // Mobile Menu Toggle
-      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-
+    // WhatsApp Contact Form Integration
+document.addEventListener("DOMContentLoaded", function() {
+    const contactForm = document.querySelector("#contact-form") || document.querySelector("form");
+    if (contactForm) {
+        contactForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            // Get input values (adjust IDs if needed to match your input fields)
+            const name = document.getElementById("name")?.value || document.querySelector("input[placeholder*='Name']")?.value || "";
+            const email = document.getElementById("email")?.value || document.querySelector("input[placeholder*='Email']")?.value || "";
+            const project = document.getElementById("project")?.value || document.querySelector("input[placeholder*='Project']")?.value || "";
+            const message = document.getElementById("message")?.value || document.querySelector("textarea")?.value || "";
+            
+            // Put your actual WhatsApp phone number here with country code (e.g., 2547XXXXXXXX)
+            const phoneNumber = "2547XXXXXXXX"; 
+            
+            // Construct the message text
+            const text = `Hello! My name is ${name} (${email}).%0A%0AProject Type: ${project}%0A%0AMessage: ${message}`;
+            
+            // Open WhatsApp
+            window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
+        });
+    }
+});
+  
       // Hide mobile menu on link click
       document.querySelectorAll(".mobile-link").forEach((link) => {
         link.addEventListener("click", () => {
