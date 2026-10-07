@@ -285,9 +285,10 @@
                 class="fa-solid fa-arrow-up-right text-xs group-hover:rotate-45 transition-transform"
               ></i>
             </a>
-            <button 
+            <button
               onclick="window.open('Lyne CV.pdf', '_blank')"
-              class="glass-pill hover:bg-white text-slate-700 px-7 py-3.5 rounded-full font-medium transition shadow-sm flex items-center gap-2">
+              class="glass-pill hover:bg-white text-slate-700 px-7 py-3.5 rounded-full font-medium transition shadow-sm flex items-center gap-2"
+            >
               <span>Download CV</span>
               <i class="fa-solid fa-download text-xs text-slate-500"></i>
             </button>
@@ -1510,43 +1511,115 @@
         </button>
       </div>
     </div>
+    <!--
+  REPLACE your entire existing <script> ... </script> block (the last one, just before </body>)
+  with everything below. Nothing else in the HTML needs to change.
+-->
     <script>
+      // ============================================================
+      // 1) CONFIG — fill these in while debugging
+      // ============================================================
+      const CONFIG = {
+        whatsappNumber: "254700048700", // no "+" or spaces
+        email: "isokatlynenafuna@gmail.com",
+        // OPTIONAL: paste a Formspree / Web3Forms / Getform endpoint URL here and the
+        // form will POST there first (message lands in your inbox without the client
+        // needing WhatsApp). If empty or it fails, the form falls back to WhatsApp.
+        formEndpoint: "",
+      };
 
-    <!-- JavaScript Actions -->
-   document.addEventListener("DOMContentLoaded", function() {
-          const contactForm = document.querySelector("#contact-form") || document.querySelector("form");
-          if (contactForm) {
-              contactForm.addEventListener("submit", function(e) {
-                  e.preventDefault();
-                  
-                  const name = document.getElementById("name")?.value || "";
-                  const email = document.getElementById("email")?.value || "";
-                  const project = document.getElementById("project")?.value || "";
-                  const message = document.getElementById("message")?.value || "";
-                  
-                  const phoneNumber = "254700048700"; 
-                  
-                  const text = `Hello! My name is ${name} (${email}).%0A%0AProject Type: ${project}%0A%0AMessage: ${message}`;
-                  
-                  window.open(`https://wa.me/${phoneNumber}?text=${text}`, "_blank");
-              });
-          }
-      });
-  
-      // Hide mobile menu on link click
-      document.querySelectorAll(".mobile-link").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
+      // Every button/link on the page reads its destination from here.
+      // Use a full URL ("https://..."), a file ("Lyne CV.pdf"), or a section ("#contact").
+      const LINKS = {
+        cv: "Lyne CV.pdf",
+        about: "", // "More About Me & Background"
+        allProjects: "", // "View All Projects"
+
+        service1: "", // Product & UX Design  -> Learn More
+        service2: "", // Mobile App Engineering
+        service3: "", // Full-Stack Backends
+        service4: "", // Interactive 3D Web & UI
+
+        project1: "", // FinTrack arrow button
+        project2: "", // EduVerse arrow button
+        project3: "", // MetricsHub arrow button
+
+        github: "",
+        linkedin: "",
+        twitter: "",
+        dribbble: "",
+
+        privacy: "",
+        terms: "",
+      };
+
+      // ============================================================
+      // 2) Link wiring
+      // ============================================================
+      function goTo(key) {
+        const url = (LINKS[key] || "").trim();
+        if (!url) {
+          console.warn(
+            `[LINKS] "${key}" has no URL yet — add it to the LINKS object.`,
+          );
+          return;
+        }
+        if (url.startsWith("#")) {
+          document.querySelector(url)?.scrollIntoView({ behavior: "smooth" });
+          return;
+        }
+        const safe = url.replace(/ /g, "%20");
+        window.open(safe, "_blank", "noopener");
+      }
+
+      function bind(el, key) {
+        if (!el) {
+          console.warn(`[LINKS] Could not find the element for "${key}".`);
+          return;
+        }
+        el.removeAttribute("onclick"); // drop old inline modal handlers
+        el.style.cursor = "pointer";
+        if (el.tagName === "A") {
+          el.setAttribute(
+            "href",
+            LINKS[key] ? LINKS[key].replace(/ /g, "%20") : "#",
+          );
+        }
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          goTo(key);
         });
-      });
+      }
 
-      // Project Details Modal
-      function openProjectDetails(title, desc) {
-        document.getElementById("modal-title").innerText = title;
-        document.getElementById("modal-desc").innerText = desc;
-        const modal = document.getElementById("project-modal");
+      const byText = (selector, text) =>
+        [...document.querySelectorAll(selector)].find((el) =>
+          el.textContent.trim().startsWith(text),
+        );
+
+      // ============================================================
+      // 3) Contact form (the actual fix)
+      // ============================================================
+      function readForm() {
+        return {
+          name: document.getElementById("sender-name").value.trim(),
+          email: document.getElementById("sender-email").value.trim(),
+          project: document.getElementById("project-type").value,
+          message: document.getElementById("sender-message").value.trim(),
+        };
+      }
+
+      function showResult(title, text) {
+        const modal = document.getElementById("success-modal");
+        modal.querySelector("h3").innerText = title;
+        modal.querySelector("p").innerText = text;
         modal.classList.remove("hidden");
         modal.classList.add("flex");
+      }
+
+      function closeSuccessModal() {
+        const modal = document.getElementById("success-modal");
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
       }
 
       function closeProjectModal() {
@@ -1555,50 +1628,154 @@
         modal.classList.add("hidden");
       }
 
-      function openAllProjectsModal() {
-        openProjectDetails(
-          "All Portfolio Projects",
-          "Showcasing over 45+ digital products built across mobile platforms (React Native, Expo), backend systems (Django, Python, MySQL), and interactive 3D web applications.",
-        );
-      }
-
-      // CV Download Simulation
-      function downloadCV() {
-    const link = document.createElement('a');
-    link.href = 'Lyne CV.pdf';
-    link.download = 'Lyne_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-      }
-
       function closeCVModal() {
-        const cvModal = document.getElementById("cv-modal");
-        cvModal.classList.remove("flex");
-        cvModal.classList.add("hidden");
+        const modal = document.getElementById("cv-modal");
+        modal.classList.remove("flex");
+        modal.classList.add("hidden");
       }
 
-      // Contact Form Submission
-      function handleFormSubmit(event) {
-        event.preventDefault();
+      function buildText(d) {
+        return `Hello! My name is ${d.name} (${d.email}).\n\nProject Type: ${d.project}\n\nMessage: ${d.message}`;
+      }
+
+      function openWhatsApp(d) {
+        const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(buildText(d))}`;
+        const win = window.open(url, "_blank", "noopener");
+        if (!win) window.location.href = url; // popup blocked -> same tab
+      }
+
+      function initContactForm() {
+        const form = document.getElementById("contact-form");
+        if (!form) return;
+
+        // Remove the old inline handler that only faked a "Message Sent!" popup
+        form.removeAttribute("onsubmit");
+
         const btnText = document.getElementById("submit-btn-text");
-        btnText.innerText = "Sending...";
 
-        setTimeout(() => {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const data = readForm();
+          btnText.innerText = "Sending...";
+
+          // Preferred: send straight to your inbox if an endpoint is configured
+          if (CONFIG.formEndpoint) {
+            try {
+              const res = await fetch(CONFIG.formEndpoint, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
+                body: JSON.stringify(data),
+              });
+              if (res.ok) {
+                form.reset();
+                btnText.innerText = "Send Message";
+                showResult(
+                  "Message Sent!",
+                  "Thank you for reaching out. Isokat Lyne will get back to you within 24 hours.",
+                );
+                return;
+              }
+            } catch (err) {
+              console.warn(
+                "Form endpoint failed, falling back to WhatsApp:",
+                err,
+              );
+            }
+          }
+
+          // Fallback: open WhatsApp with the message pre-filled
+          openWhatsApp(data);
+          form.reset();
           btnText.innerText = "Send Message";
-          document.getElementById("contact-form").reset();
-          const successModal = document.getElementById("success-modal");
-          successModal.classList.remove("hidden");
-          successModal.classList.add("flex");
-        }, 800);
+          showResult(
+            "Almost there!",
+            "WhatsApp is opening with your message pre-filled. Tap Send in WhatsApp to deliver it.",
+          );
+        });
+
+        // Secondary option: email instead (always works, no popup needed)
+        const emailLine = document.createElement("p");
+        emailLine.className = "text-center text-xs text-slate-500";
+        emailLine.innerHTML =
+          'Prefer email? <a href="#" id="email-fallback" class="font-semibold text-indigo-600 hover:underline">Send by email instead</a>';
+        form.appendChild(emailLine);
+
+        document
+          .getElementById("email-fallback")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            if (!form.reportValidity()) return;
+            const d = readForm();
+            const subject = `Portfolio enquiry: ${d.project}`;
+            window.location.href = `mailto:${CONFIG.email}?subject=${encodeURIComponent(
+              subject,
+            )}&body=${encodeURIComponent(buildText(d))}`;
+          });
       }
 
-      function closeSuccessModal() {
-        const successModal = document.getElementById("success-modal");
-        successModal.classList.remove("flex");
-        successModal.classList.add("hidden");
-      }
+      // ============================================================
+      // 4) Init
+      // ============================================================
+      document.addEventListener("DOMContentLoaded", () => {
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (mobileMenuBtn && mobileMenu) {
+          mobileMenuBtn.addEventListener("click", () =>
+            mobileMenu.classList.toggle("hidden"),
+          );
+          document
+            .querySelectorAll(".mobile-link")
+            .forEach((l) =>
+              l.addEventListener("click", () =>
+                mobileMenu.classList.add("hidden"),
+              ),
+            );
+        }
+
+        initContactForm();
+
+        // Buttons -> LINKS
+        bind(byText("button", "Download CV"), "cv");
+        bind(document.querySelector('#about a[href="#contact"]'), "about");
+        bind(byText("button", "View All Projects"), "allProjects");
+
+        document
+          .querySelectorAll("#services .glass-card > div:last-child")
+          .forEach((el, i) => bind(el, `service${i + 1}`));
+
+        document
+          .querySelectorAll("#work .glass-card button")
+          .forEach((el, i) => bind(el, `project${i + 1}`));
+
+        ["github", "linkedin", "twitter", "dribbble"].forEach((key, i) =>
+          bind(document.querySelectorAll('#contact a[href="#"]')[i], key),
+        );
+
+        bind(byText("footer a", "Privacy Policy"), "privacy");
+        bind(byText("footer a", "Terms of Service"), "terms");
+
+        // "fa-arrow-up-right" doesn't exist in Font Awesome 6.4 free -> invisible icon
+        document
+          .querySelectorAll("i.fa-arrow-up-right")
+          .forEach((i) =>
+            i.classList.replace(
+              "fa-arrow-up-right",
+              "fa-arrow-up-right-from-square",
+            ),
+          );
+
+        // Copy/branding leftovers
+        document.querySelectorAll("footer p").forEach((p) => {
+          p.textContent = p.textContent.replace(
+            "Aarav Singh",
+            "Isokat Lyne Nafuna",
+          );
+        });
+      });
     </script>
   </body>
 </html>
